@@ -1,0 +1,7 @@
+body {
+    background-color: lightgray;
+    padding: 15px;
+}
+
+
+@import "../../node_modules/bootstrap";
