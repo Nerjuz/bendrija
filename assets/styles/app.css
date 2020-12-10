@@ -17,4 +17,14 @@ body {
     border-radius: 10px;
 }
 
+label.required:after   {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}
+label.required.form-check-label:after   {
+    content: '';
+    display:inline;
+}
+
 @import "../../node_modules/bootstrap";
