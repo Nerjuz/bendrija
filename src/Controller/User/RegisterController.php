@@ -4,6 +4,7 @@ namespace App\Controller\User;
 
 use App\Entity\User;
 use App\Form\UserType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,7 @@ class RegisterController extends AbstractController
     /**
      * @Route("/", name="user")
      */
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
 
@@ -25,7 +26,9 @@ class RegisterController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user =  $form->getData();
 
-            dd($user);
+            $entityManager->persist($user);
+            $entityManager->flush();
+
         }
 
         return $this->render(
