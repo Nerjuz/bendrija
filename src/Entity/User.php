@@ -43,6 +43,11 @@ class User
      */
     private $flatNumber;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $agree;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,5 +111,15 @@ class User
         $this->flatNumber = $flatNumber;
 
         return $this;
+    }
+
+    public function getAgree(): bool
+    {
+        return $this->agree;
+    }
+
+    public function setAgree(bool $agree): void
+    {
+        $this->agree = $agree;
     }
 }
