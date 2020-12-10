@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class RegisterController extends AbstractController
 {
     /**
-     * @Route("/", name="user")
+     * @Route("/", name="user_register")
      */
     public function __invoke(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -28,6 +28,8 @@ class RegisterController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
+
+            return $this->redirectToRoute('user_register_success');
 
         }
 
